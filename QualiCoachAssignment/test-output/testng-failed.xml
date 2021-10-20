@@ -6,8 +6,8 @@
       <class name="Qualitest.QualiCoachAssignment.StudentTest">
         <methods>
           <include name="validstudentPageAutomation"/>
+          <include name="badgeAndFeedback"/>
           <include name="init"/>
-          <include name="getCertificate"/>
         </methods>
       </class> <!-- Qualitest.QualiCoachAssignment.StudentTest -->
     </classes>
