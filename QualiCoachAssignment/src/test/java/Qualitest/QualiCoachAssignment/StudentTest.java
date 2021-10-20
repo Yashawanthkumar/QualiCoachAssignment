@@ -10,9 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import pageobjects.EditStudentProfile;
-import pageobjects.LoginPage;
-import pageobjects.SameOperations;
+import pageobjects.sameoperations.LoginPage;
+import pageobjects.sameoperations.SameOperations;
+import pageobjects.student.EditStudentProfile;
 import pageobjects.student.EnroleForCoursePage;
 import pageobjects.student.GetCertificatePage;
 import resources.CustomExceptions;
@@ -95,12 +95,13 @@ public class StudentTest extends Initializer {
 		WebElement courseSelect=GetCertificatePage.getCourseButton(driver);
 		Actions actions=new Actions(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,1200)");
-		
-		js.executeScript("window.scrollBy(0,1200)");
+		js.executeScript("window.scrollBy(0,2000)");
 		EnroleForCoursePage.getShowAllButton(driver).click();
 		js.executeScript("window.scrollBy(0,2000)");
 		actions.moveToElement(courseSelect).click().build().perform();
+		GetCertificatePage.getCertifiacteButton(driver).click();
+		GetCertificatePage.getCertifiacte(driver).click();
+		GetCertificatePage.downloadCertifiacte(driver).click();
 	}
 
 	@Test

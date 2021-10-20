@@ -7,12 +7,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageobjects.AddCourse;
-import pageobjects.CreateNewCourse;
-import pageobjects.DeleteSelectedUser;
-import pageobjects.EditUserInformation;
-import pageobjects.LoginPage;
-import pageobjects.SameOperations;
+
+import pageobjects.admin.AddCourse;
+import pageobjects.admin.CreateNewCourse;
+import pageobjects.admin.DeleteSelectedUser;
+import pageobjects.admin.EditUserInformation;
+import pageobjects.sameoperations.LoginPage;
+import pageobjects.sameoperations.SameOperations;
 import resources.Initializer;
 
 public class AdminTest extends Initializer {

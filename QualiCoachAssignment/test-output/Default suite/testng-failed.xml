@@ -5,9 +5,9 @@
     <classes>
       <class name="Qualitest.QualiCoachAssignment.StudentTest">
         <methods>
-          <include name="enroleToCourse"/>
           <include name="validstudentPageAutomation"/>
           <include name="init"/>
+          <include name="getCertificate"/>
         </methods>
       </class> <!-- Qualitest.QualiCoachAssignment.StudentTest -->
     </classes>
