@@ -1,5 +1,7 @@
 package Qualitest.QualiCoachAssignment;
 
+//Importing necessary packages
+
 import java.io.IOException;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,9 +16,15 @@ import pageobjects.sameoperations.LoginPage;
 import pageobjects.sameoperations.SameOperations;
 import pageobjects.student.EditStudentProfile;
 import pageobjects.student.EnroleForCoursePage;
-import pageobjects.student.GetCertificatePage;
+import pageobjects.student.CertificateBadgeFeedbackPage;
 import resources.CustomExceptions;
 import resources.Initializer;
+
+/*
+ * StudentTest is Test class.It has all the performance/actions that a student is performing
+ * as per the requirements given.
+ * Author : Yashawantkumar Hodlur
+ */
 
 public class StudentTest extends Initializer {
 
@@ -89,21 +97,63 @@ public class StudentTest extends Initializer {
 	}
 	
 	@Test(dependsOnMethods = {"validstudentPageAutomation"})
-	public void getCertificate()
+	public void getCertificate() throws InterruptedException
 	{
 		//Assert.assertEquals(driver.getTitle(),"");
-		WebElement courseSelect=GetCertificatePage.getCourseButton(driver);
+		WebElement courseSelect=CertificateBadgeFeedbackPage.getCourseButton(driver);
 		Actions actions=new Actions(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,2000)");
 		EnroleForCoursePage.getShowAllButton(driver).click();
 		js.executeScript("window.scrollBy(0,2000)");
 		actions.moveToElement(courseSelect).click().build().perform();
-		GetCertificatePage.getCertifiacteButton(driver).click();
-		GetCertificatePage.getCertifiacte(driver).click();
-		GetCertificatePage.downloadCertifiacte(driver).click();
+		
+		WebElement certificateScroll = CertificateBadgeFeedbackPage.getCertifiacteButton(driver);
+		actions.moveToElement(certificateScroll).click().build().perform();
+		
+		WebElement getCertificateButton = CertificateBadgeFeedbackPage.getCertifiacte(driver);
+		actions.moveToElement(getCertificateButton).click().build().perform();
+		Thread.sleep(2000);
+		
+		WebElement downloadCertificate= CertificateBadgeFeedbackPage.downloadCertifiacte(driver);
+		actions.moveToElement(downloadCertificate).click().build().perform();	
 	}
-
+	
+	@Test(dependsOnMethods = {"validstudentPageAutomation"})
+	public void badgeAndFeedback()
+	{
+		//Assert.assertEquals(driver.getTitle(),"");
+		WebElement courseSelect=CertificateBadgeFeedbackPage.getCourseButton(driver);
+		Actions actions=new Actions(driver);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,2000)");
+		EnroleForCoursePage.getShowAllButton(driver).click();
+		js.executeScript("window.scrollBy(0,2000)");
+		actions.moveToElement(courseSelect).click().build().perform();
+		
+		WebElement badgeAndFeedback = CertificateBadgeFeedbackPage.getBadgeAndFeedbcak(driver);
+		actions.moveToElement(badgeAndFeedback).click().build().perform();
+		
+		WebElement badgeView = CertificateBadgeFeedbackPage.getBadge(driver);
+		actions.moveToElement(badgeView).click().build().perform();
+		
+		WebElement feedBack = CertificateBadgeFeedbackPage.feedBack(driver);
+		actions.moveToElement(feedBack).click().build().perform();
+		
+		WebElement feedButton = CertificateBadgeFeedbackPage.getFillButton(driver);
+		actions.moveToElement(feedButton).click().build().perform();
+		
+		WebElement firstFeedback= CertificateBadgeFeedbackPage.getFirstFeedback(driver);
+		actions.moveToElement(firstFeedback).click().build().perform();
+		
+		WebElement secondFeedback= CertificateBadgeFeedbackPage.getSecondFeedback(driver);
+		actions.moveToElement(secondFeedback).click().build().perform();
+		
+		WebElement saveFeedback= CertificateBadgeFeedbackPage.saveFeedback(driver);
+		actions.moveToElement(saveFeedback).click().build().perform();
+		
+	}
+	
 	@Test
 	public void inValidPassword() throws IOException {
 		driver.get(properties.getProperty("url"));
