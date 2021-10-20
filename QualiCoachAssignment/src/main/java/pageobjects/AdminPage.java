@@ -15,114 +15,88 @@ public class AdminPage {
 		//login button
 		By loginButton=By.id("loginbtn");
 		
-		//A admin profile image
-		By profile=By.xpath("//span[@class='userbutton']");
+		//to click on course tab to create new course
+		By courseTab=By.xpath("/html/body/section/div[2]/div/ul/li[3]");
 		
-		//to get switch role button
-		By switchRoleButton=By.id("actionmenuaction-7");
+		//to get Error message for invalid login
+		By invalidMessage=By.xpath("//span[@class='error']");
 		
-		//to click on users tab
-		By userTab=By.xpath("//div[@id='dashboard_flip']/ul/li[4]");
+		//to get course management button to add course
+		By courseManage=By.xpath("//a[text()='Manage courses and categories']");
 		
-		//to click on site administration user tab
-		By siteAdminUser=By.xpath("/html/body/section/div[2]/div/ul/li[2]");
+		//to create new category
+		By createCategory=By.xpath("//a[text()='Create new category']");
 		
-		//to click on add user button from site administration user tab
-		By  addNewUserButton=By.xpath("//a[text()='Add a new user']");
+		//to name the new category through field
+		By newCategoryNameField=By.xpath("//input[@id='id_name']");
 		
-		//to add user(enter user name field)
-		By usernameField =By.xpath("//input[@name='username']");
+		//to name the new category through field
+		By createCategoryButton=By.xpath("//input[@name='submitbutton']");
 		
-		//to add user(enter first name field)
-		By firstnameField =By.xpath("//input[@name='firstname']");
+		//to create new course in new created category
+		By createNewCourse=By.xpath("//a[text()='Create new course']");
 		
-		//to add user(enter last name field)
-		By lastnameField =By.xpath("//input[@name='lastname']");
+		//to get course full name field for new created course
+		By fullNameOfCourse=By.id("id_fullname");
 		
-		//to add user(enter email field)
-		By emailField =By.xpath("//input[@name='email']");
+		//to get course short name field for new created course
+		By shortNameOfCourse=By.id("id_shortname");
 		
-		//to click create user button
-		By createUserButton =By.xpath("//input[@name='submitbutton']");
+		//to add course description of newly created course
+		By descritpionOfCourse=By.id("id_summary_editoreditable");
 		
-		//to enter user password
-		By userNewPasswordButton =By.xpath("//em[contains(text(),'Click to enter text')]");
+		//to click on save and display button
+		By saveAndDisplay=By.name("saveanddisplay");
 		
-		//to enter user password
-		By userNewPasswordField =By.id("id_newpassword");
 		
-		public WebElement getUserNewPasswordField(WebDriver driver)
+		
+		public WebElement getSaveAndDisplay(WebDriver driver)
 		{
-			return driver.findElement(userNewPasswordField);
+			return driver.findElement(saveAndDisplay);
 		}
 		
-		public WebElement getUserNewPasswordButton(WebDriver driver)
+		public WebElement getDescriptionField(WebDriver driver)
 		{
-			return driver.findElement(userNewPasswordButton);
+			return driver.findElement(descritpionOfCourse);
 		}
 		
-		public WebElement getCreateUserButton(WebDriver driver)
+		public WebElement getCourseFullName(WebDriver driver)
 		{
-			return driver.findElement(createUserButton);
+			return driver.findElement(fullNameOfCourse);
 		}
 		
-		public WebElement getEmailField(WebDriver driver)
+		public WebElement getCourseShortName(WebDriver driver)
 		{
-			return driver.findElement(emailField);
+			return driver.findElement(shortNameOfCourse);
 		}
 		
-		public WebElement getLastnameField(WebDriver driver)
+		public WebElement getCreateNewCourse(WebDriver driver)
 		{
-			return driver.findElement(lastnameField);
+			return driver.findElement(createNewCourse);
 		}
 		
-		public WebElement getFirstnameField(WebDriver driver)
+		public WebElement getCreateCategoryButton(WebDriver driver)
 		{
-			return driver.findElement(firstnameField);
+			return driver.findElement(createCategoryButton);
 		}
 		
-		public WebElement getUsernameField(WebDriver driver)
+		public WebElement getNameFieldCategory(WebDriver driver)
 		{
-			return driver.findElement(usernameField);
+			return driver.findElement(newCategoryNameField);
 		}
 		
-		public WebElement getAddNewUserButton(WebDriver driver)
+		public WebElement getCreateCategory(WebDriver driver)
 		{
-			return driver.findElement(addNewUserButton);
+			return driver.findElement(createCategory);
 		}
 		
-		public WebElement getSiteAdminUser(WebDriver driver)
+		public WebElement getCourseManagement(WebDriver driver)
 		{
-			return driver.findElement(siteAdminUser);
+			return driver.findElement(courseManage);
 		}
 		
-		public WebElement getUserTabButton(WebDriver driver)
+		public WebElement getCourseTab(WebDriver driver)
 		{
-			return driver.findElement(userTab);
-		}
-		
-		public WebElement getProfile(WebDriver driver)
-		{
-			return driver.findElement(profile);
-		}
-		
-		public WebElement getSwitchRoleButton(WebDriver driver)
-		{
-			return driver.findElement(switchRoleButton);
-		}
-		
-		public WebElement getUsername(WebDriver driver)
-		{
-			return driver.findElement(userName);
-		}
-
-		public WebElement getPassword(WebDriver driver)
-		{
-			return driver.findElement(password);
-		}
-
-		public WebElement getLoginButton(WebDriver driver)
-		{
-			return driver.findElement(loginButton);
+			return driver.findElement(courseTab);
 		}
 }

@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Qualitest.QualiCoachAssignment.AdminTest">
+      <class name="Qualitest.QualiCoachAssignment.StudentTest">
         <methods>
-          <include name="createNewUser"/>
+          <include name="enroleToCourse"/>
+          <include name="validstudentPageAutomation"/>
           <include name="init"/>
-          <include name="validAdminPageAutomation"/>
         </methods>
-      </class> <!-- Qualitest.QualiCoachAssignment.AdminTest -->
+      </class> <!-- Qualitest.QualiCoachAssignment.StudentTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
