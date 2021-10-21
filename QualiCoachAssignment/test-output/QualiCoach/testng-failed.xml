@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [QualiCoach]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="StudentTest(failed)">
+    <classes>
+      <class name="Qualitest.QualiCoachAssignment.StudentTest">
+        <methods>
+          <include name="enroleToCourse"/>
+          <include name="emptyFields"/>
+          <include name="validstudentPageAutomation"/>
+          <include name="numericValues"/>
+          <include name="init"/>
+          <include name="closeDriver"/>
+          <include name="getCertificate"/>
+        </methods>
+      </class> <!-- Qualitest.QualiCoachAssignment.StudentTest -->
+    </classes>
+  </test> <!-- StudentTest(failed) -->
+</suite> <!-- Failed suite [QualiCoach] -->

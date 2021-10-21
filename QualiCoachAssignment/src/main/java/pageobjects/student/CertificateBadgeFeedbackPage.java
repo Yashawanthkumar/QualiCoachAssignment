@@ -39,6 +39,22 @@ public class CertificateBadgeFeedbackPage {
 	//To save feedback form
 	static By saveFeedback=By.xpath("//input[@id='id_savevalues']");
 	
+	//to get back to home
+	static By home=By.xpath("//*[@id=\"page-navbar\"]/nav/nav/ul/li[1]/span[1]/a/span");
+	
+	//to get back certificate home
+	static By certficatehome=By.xpath("//*[@id=\"page-navbar\"]/div[1]/nav/ul/li[1]/span[1]/a/span");
+	
+	public static WebElement getCertificateHome(WebDriver driver)
+	{
+		return driver.findElement(certficatehome);
+	}
+	
+	public static WebElement getToHome(WebDriver driver)
+	{
+		return driver.findElement(home);
+	}
+	
 	public static WebElement saveFeedback(WebDriver driver)
 	{
 		return driver.findElement(saveFeedback);

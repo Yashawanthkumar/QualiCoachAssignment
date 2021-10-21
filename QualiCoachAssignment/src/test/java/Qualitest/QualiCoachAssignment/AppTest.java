@@ -1,18 +1,19 @@
 package Qualitest.QualiCoachAssignment;
 
-import org.junit.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.testng.annotations.Test;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+    private static final  Logger logger=LogManager.getLogger(AppTest.class);
+    
     @Test
-    public void shouldAnswerWithTrue()
+    public void demo()
     {
-        System.out.println("Hello World");
+    	System.out.println("Inherited");
     }
 }

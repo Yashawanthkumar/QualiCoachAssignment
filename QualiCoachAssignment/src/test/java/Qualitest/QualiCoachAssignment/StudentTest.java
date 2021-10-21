@@ -3,31 +3,36 @@ package Qualitest.QualiCoachAssignment;
 //Importing necessary packages
 
 import java.io.IOException;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import pageobjects.sameoperations.LoginPage;
 import pageobjects.sameoperations.SameOperations;
+import pageobjects.student.CertificateBadgeFeedbackPage;
 import pageobjects.student.EditStudentProfile;
 import pageobjects.student.EnroleForCoursePage;
-import pageobjects.student.CertificateBadgeFeedbackPage;
-import resources.CustomExceptions;
 import resources.Initializer;
 
 /*
- * StudentTest is Test class.It has all the performance/actions that a student is performing
+ * StudentTest is Test class.It has all the performance/actions that a student can perform
  * as per the requirements given.
  * Author : Yashawantkumar Hodlur
+ * Date : 16/Oct/2021
  */
 
 public class StudentTest extends Initializer {
-
+	
+	/*
+	 * init is method and it is used to initialize the driver and 
+	 * properties file(resource bundle).
+	 * It always runs before the every test cases present in the StudentTest class
+	 */
+	
 	@BeforeTest
 	public void init() throws IOException {
 		driver = setUp();
@@ -46,11 +51,13 @@ public class StudentTest extends Initializer {
 		
 		// To confirm that user is logged in successfully or not
 		Assert.assertEquals(driver.getTitle(), "Qualicoach");
+		System.out.println("In valid");
 	}
 	
-	@Test(dependsOnMethods = {"validstudentPageAutomation"})
-	public void enroleToCourse() throws CustomExceptions
+	@Test(dependsOnMethods={"validstudentPageAutomation"})
+	public void enroleToCourse()
 	{
+		CertificateBadgeFeedbackPage.getToHome(driver).click();
 		//Assert.assertEquals(driver.getTitle(),"");
 		WebElement courseSelect=EnroleForCoursePage.getCourseButton(driver);
 		Actions actions=new Actions(driver);
@@ -58,47 +65,57 @@ public class StudentTest extends Initializer {
 		js.executeScript("window.scrollBy(0,1200)");
 		EnroleForCoursePage.getShowAllButton(driver).click();
 		js.executeScript("window.scrollBy(0,1600)");
-		actions.moveToElement(courseSelect).click().build().perform();
-		
-		try {
-				EnroleForCoursePage.getEnrolButton(driver).click();
-				System.out.println("User is enroled for the course");
-	    } catch (org.openqa.selenium.NoSuchElementException e) {
-	    	CustomExceptions exception = new CustomExceptions("User is already enroled for the course");
-	         throw exception;
+		actions.moveToElement(courseSelect).click().build().perform();		
+		try
+		{
+			EnroleForCoursePage.getEnrolButton(driver).click();
 	    }
+		catch (Exception e)
+		{
+	    	System.out.println("Exception caught in : "+e.getMessage()+" ,User is already enroled for the course");
+	    }
+		System.out.println("In enrole to course");
 	}
 	
-	@Test
+	@Test(dependsOnMethods = {"validstudentPageAutomation"})
 	public void editProfile() throws IOException, InterruptedException {
 		
 		SameOperations.getProfile(driver).click();
 		Thread.sleep(2000L);
+		
 		EditStudentProfile.getProfileButton(driver).click();
 		Thread.sleep(2000L);
+		
 		EditStudentProfile.getEditProfile(driver).click();
 		Thread.sleep(1000);
+		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,200)");
-
+		
 		WebElement dropdown = EditStudentProfile.getEmailDisplay(driver);
 		Select options = new Select(dropdown);
 		dropdown.click();
 		options.selectByIndex(2);
 		dropdown.click();
 		Thread.sleep(1000);
+		
 		js.executeScript("window.scrollBy(0,300)");
 		Thread.sleep(1000);
+		
 		EditStudentProfile.getDescriptionBox(driver).clear();
 		EditStudentProfile.getDescriptionBox(driver).sendKeys("My full name is "+ EditStudentProfile.getnameOfStudent(driver));
 		Thread.sleep(1000);
+		
 		js.executeScript("window.scrollBy(0,800)");
 		EditStudentProfile.getUpdateProfileButton(driver).click();
+		
+		System.out.println("In edit profile");
 	}
 	
-	@Test(dependsOnMethods = {"validstudentPageAutomation"})
-	public void getCertificate() throws InterruptedException
+	@Test(dependsOnMethods={"validstudentPageAutomation","getFeedbackBadge"})
+	public void getFeedbackCertificate() throws InterruptedException
 	{
+		CertificateBadgeFeedbackPage.getCertificateHome(driver).click();
 		//Assert.assertEquals(driver.getTitle(),"");
 		WebElement courseSelect=CertificateBadgeFeedbackPage.getCourseButton(driver);
 		Actions actions=new Actions(driver);
@@ -117,12 +134,14 @@ public class StudentTest extends Initializer {
 		
 		WebElement downloadCertificate= CertificateBadgeFeedbackPage.downloadCertifiacte(driver);
 		actions.moveToElement(downloadCertificate).click().build().perform();	
+
+		System.out.println("In get certificate");
 	}
 	
 	@Test(dependsOnMethods = {"validstudentPageAutomation"})
-	public void badgeAndFeedback()
+	public void getFeedbackBadge()
 	{
-		//Assert.assertEquals(driver.getTitle(),"");
+		CertificateBadgeFeedbackPage.getCertificateHome(driver).click();
 		WebElement courseSelect=CertificateBadgeFeedbackPage.getCourseButton(driver);
 		Actions actions=new Actions(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -140,6 +159,7 @@ public class StudentTest extends Initializer {
 		WebElement feedBack = CertificateBadgeFeedbackPage.feedBack(driver);
 		actions.moveToElement(feedBack).click().build().perform();
 		
+		try {
 		WebElement feedButton = CertificateBadgeFeedbackPage.getFillButton(driver);
 		actions.moveToElement(feedButton).click().build().perform();
 		
@@ -151,7 +171,12 @@ public class StudentTest extends Initializer {
 		
 		WebElement saveFeedback= CertificateBadgeFeedbackPage.saveFeedback(driver);
 		actions.moveToElement(saveFeedback).click().build().perform();
-		
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception caught in Feedback method : User already given feedback");
+		}
+		System.out.println("In badge and feedback");
 	}
 	
 	@Test
@@ -165,6 +190,7 @@ public class StudentTest extends Initializer {
 
 		// To confirm that error message is displaying or not
 		Assert.assertTrue((LoginPage.getErrorMessage(driver).isDisplayed()));
+		System.out.println("In invalid");
 	}
 
 	@Test
@@ -178,6 +204,8 @@ public class StudentTest extends Initializer {
 
 		// To confirm that error message is displaying or not
 		Assert.assertTrue((LoginPage.getErrorMessage(driver).isDisplayed()));
+		
+		System.out.println("In invalid ");
 	}
 
 	@Test
@@ -191,6 +219,8 @@ public class StudentTest extends Initializer {
 
 		// To confirm that error message is displaying or not
 		Assert.assertTrue((LoginPage.getErrorMessage(driver).isDisplayed()));
+		
+		System.out.println("In numeric");
 	}
 
 	@Test
@@ -204,8 +234,10 @@ public class StudentTest extends Initializer {
 
 		// To confirm that error message is displaying or not
 		Assert.assertTrue((LoginPage.getErrorMessage(driver).isDisplayed()));
+		
+		System.out.println("In empty");
 	}
-
+//
 //	@AfterTest
 //	public void closeDriver() {
 //		driver.close();

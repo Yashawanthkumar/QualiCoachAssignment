@@ -1,25 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="7" total="9" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-10-20T14:39:58 IST" name="Default suite" finished-at="2021-10-20T14:41:10 IST" duration-ms="71622">
+  <suite started-at="2021-10-21T22:52:43 IST" name="Default suite" finished-at="2021-10-21T22:58:41 IST" duration-ms="358003">
     <groups>
     </groups>
-    <test started-at="2021-10-20T14:39:58 IST" name="Default test" finished-at="2021-10-20T14:41:10 IST" duration-ms="71622">
-      <class name="Qualitest.QualiCoachAssignment.StudentTest">
-        <test-method is-config="true" signature="init()[pri:0, instance:Qualitest.QualiCoachAssignment.StudentTest@1e1a0406]" started-at="2021-10-20T14:39:58 IST" name="init" finished-at="2021-10-20T14:40:01 IST" duration-ms="3437" status="PASS">
+    <test started-at="2021-10-21T22:52:43 IST" name="Default test" finished-at="2021-10-21T22:58:41 IST" duration-ms="358003">
+      <class name="Qualitest.QualiCoachAssignment.AdminTest">
+        <test-method is-config="true" signature="init()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:52:43 IST" name="init" finished-at="2021-10-21T22:52:50 IST" duration-ms="6911" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="validstudentPageAutomation()[pri:0, instance:Qualitest.QualiCoachAssignment.StudentTest@1e1a0406]" started-at="2021-10-20T14:40:02 IST" name="validstudentPageAutomation" finished-at="2021-10-20T14:40:48 IST" duration-ms="46700" status="PASS">
+        <test-method signature="alphanumericValues()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:52:50 IST" name="alphanumericValues" finished-at="2021-10-21T22:53:08 IST" duration-ms="18487" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validstudentPageAutomation -->
-        <test-method signature="badgeAndFeedback()[pri:0, instance:Qualitest.QualiCoachAssignment.StudentTest@1e1a0406]" started-at="2021-10-20T14:40:48 IST" name="badgeAndFeedback" finished-at="2021-10-20T14:41:10 IST" depends-on-methods="Qualitest.QualiCoachAssignment.StudentTest.validstudentPageAutomation" duration-ms="21422" status="PASS">
+        </test-method> <!-- alphanumericValues -->
+        <test-method signature="emptyFields()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:53:08 IST" name="emptyFields" finished-at="2021-10-21T22:53:19 IST" duration-ms="10506" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- badgeAndFeedback -->
-      </class> <!-- Qualitest.QualiCoachAssignment.StudentTest -->
+        </test-method> <!-- emptyFields -->
+        <test-method signature="inValidPassword()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:53:19 IST" name="inValidPassword" finished-at="2021-10-21T22:53:26 IST" duration-ms="6841" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- inValidPassword -->
+        <test-method signature="inValidUsername()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:53:26 IST" name="inValidUsername" finished-at="2021-10-21T22:53:31 IST" duration-ms="5575" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- inValidUsername -->
+        <test-method signature="validAdminPageAutomation()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:53:31 IST" name="validAdminPageAutomation" finished-at="2021-10-21T22:55:52 IST" duration-ms="140629" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validAdminPageAutomation -->
+        <test-method signature="addCourse()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:55:52 IST" name="addCourse" finished-at="2021-10-21T22:57:06 IST" depends-on-methods="Qualitest.QualiCoachAssignment.AdminTest.validAdminPageAutomation" duration-ms="73790" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCourse -->
+        <test-method signature="createNewUser()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:57:06 IST" name="createNewUser" finished-at="2021-10-21T22:57:37 IST" depends-on-methods="Qualitest.QualiCoachAssignment.AdminTest.validAdminPageAutomation" duration-ms="31484" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createNewUser -->
+        <test-method signature="editUsersInformation()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:57:37 IST" name="editUsersInformation" finished-at="2021-10-21T22:58:03 IST" depends-on-methods="Qualitest.QualiCoachAssignment.AdminTest.validAdminPageAutomation" duration-ms="25911" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editUsersInformation -->
+        <test-method signature="viewDownloadReports()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:58:03 IST" name="viewDownloadReports" finished-at="2021-10-21T22:58:16 IST" depends-on-methods="Qualitest.QualiCoachAssignment.AdminTest.validAdminPageAutomation" duration-ms="12827" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- viewDownloadReports -->
+        <test-method signature="deleteUser()[pri:0, instance:Qualitest.QualiCoachAssignment.AdminTest@4dbb42b7]" started-at="2021-10-21T22:58:16 IST" name="deleteUser" finished-at="2021-10-21T22:58:41 IST" depends-on-methods="Qualitest.QualiCoachAssignment.AdminTest.editUsersInformation, Qualitest.QualiCoachAssignment.AdminTest.validAdminPageAutomation" duration-ms="24926" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteUser -->
+      </class> <!-- Qualitest.QualiCoachAssignment.AdminTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

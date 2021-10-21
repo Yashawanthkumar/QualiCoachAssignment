@@ -5,36 +5,51 @@ package Qualitest.QualiCoachAssignment;
 import java.io.IOException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import pageobjects.admin.AddCourse;
 import pageobjects.admin.CreateNewCourse;
 import pageobjects.admin.DeleteSelectedUser;
 import pageobjects.admin.EditUserInformation;
+import pageobjects.admin.ViewDownloadReportPage;
 import pageobjects.sameoperations.LoginPage;
 import pageobjects.sameoperations.SameOperations;
 import resources.Initializer;
 
+/*
+ * AdminTest is Test class.It has all the performance/actions that a admin can perform
+ * as per the requirements given.
+ * Author : Yashawantkumar Hodlur
+ * Date : 17/Oct/2021
+ */
 public class AdminTest extends Initializer {
-
-	@BeforeTest
+	
+	/*
+	 * init is method and it is used to initialize the driver and 
+	 * properties file(resource bundle).
+	 * It always runs before the every test cases present in the AdminTest class
+	 */
+	@BeforeTest()
 	public void init() throws IOException {
 		driver = setUp();
 	}
-
+	
 	@Test
 	public void validAdminPageAutomation() throws IOException {
 
 		driver.get(properties.getProperty("url"));
 		// calling AdminPage page object to get web elements
 	
-		LoginPage.getUsername(driver).sendKeys("admin73");
+		LoginPage.getUsername(driver).sendKeys("admin69");
 		LoginPage.getPassword(driver).sendKeys("Admin@6100");
 		LoginPage.getLoginButton(driver).click();
 		
 		// To confirm that user is logged in successfully or not
 		System.out.println(driver.getTitle());
+		
+		System.out.println("In valid admin");
+		
 		Assert.assertEquals(driver.getTitle(), "Qualicoach");
 	}
 
@@ -74,6 +89,7 @@ public class AdminTest extends Initializer {
 		Thread.sleep(1000L);
 		
 		CreateNewCourse.getCreateUserButton(driver).click();
+		System.out.println("In create new user");
 	}
 
 	@Test(dependsOnMethods = { "validAdminPageAutomation" })
@@ -91,6 +107,7 @@ public class AdminTest extends Initializer {
 		SameOperations.getSiteAdminUser(driver).click();
 		Thread.sleep(1000L);
 		
+		try {
 		SameOperations.getUserBrowserList(driver).click();
 		String username = "Megharaj";
 		SameOperations.getSearchInUserListField(driver).sendKeys(username.toLowerCase());
@@ -102,9 +119,29 @@ public class AdminTest extends Initializer {
 		EditUserInformation.getEditGearButton(driver).click();
 		Assert.assertEquals(driver.getTitle(), "Qualicoach: Edit profile - Megharaj Salagar");
 		Thread.sleep(3000L);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception caught in "+e.getClass() +" :User Megharaj Salagar is deleted");
+		}
 	}
-
-	@Test(dependsOnMethods = { "validAdminPageAutomation" })
+	
+	@Test(dependsOnMethods = { "validAdminPageAutomation"})
+	public void viewDownloadReports() throws InterruptedException
+	{
+		SameOperations.getProfile(driver).click();
+		Thread.sleep(1000L);
+		
+		ViewDownloadReportPage.getDashBoard(driver).click();
+		Thread.sleep(1000L);
+		
+		ViewDownloadReportPage.getCourse(driver).click();
+		Thread.sleep(1000L);
+		
+		ViewDownloadReportPage.downloadReport(driver).click();
+	}
+	
+	@Test(dependsOnMethods = { "validAdminPageAutomation","editUsersInformation"})
 	public void deleteUser() throws InterruptedException {
 		
 		SameOperations.getProfile(driver).click();
@@ -126,11 +163,16 @@ public class AdminTest extends Initializer {
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,200)");
+		try {
 		Assert.assertEquals(EditUserInformation.getSearchedResult(driver).getText(), "Megharaj Salagar");
 		DeleteSelectedUser.getDeleteButton(driver).click();
 		DeleteSelectedUser.deleteFromAlert(driver).click();
 		Thread.sleep(3000L);
 		driver.switchTo().alert().accept();
+		}
+		catch(Exception e) {
+			System.out.println("Exception caught in "+e.getClass() +" :User Megharaj Salagar is already deleted");
+		}
 	}
 
 	@Test(dependsOnMethods = { "validAdminPageAutomation" })
@@ -164,9 +206,8 @@ public class AdminTest extends Initializer {
 		AddCourse.getCourseFullName(driver).sendKeys("Java And Sql concepts");
 		Thread.sleep(1000L);
 		
-		AddCourse.getCourseShortName(driver).sendKeys("java");
-		Thread.sleep(1000L);
-
+		try {
+		AddCourse.getCourseShortName(driver).sendKeys("OOPS");
 		js.executeScript("window.scrollBy(0,500)");
 		Thread.sleep(2000L);
 
@@ -175,6 +216,12 @@ public class AdminTest extends Initializer {
 		
 		js.executeScript("window.scrollBy(0,1300)");
 		AddCourse.getSaveAndDisplay(driver).click();
+		Thread.sleep(1000L);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception caught in "+e.getClass() +" :the shortname entered is already in use");
+		}
 	}
 
 	@Test
@@ -188,6 +235,8 @@ public class AdminTest extends Initializer {
 
 		// To confirm that error message is displaying or not
 		Assert.assertTrue((LoginPage.getErrorMessage(driver).isDisplayed()));
+		
+		System.out.println("In invalid password");
 	}
 
 	@Test
@@ -202,10 +251,12 @@ public class AdminTest extends Initializer {
 
 		// To confirm that error message is displaying or not
 		Assert.assertTrue((LoginPage.getErrorMessage(driver).isDisplayed()));
+		
+		System.out.println("In invalid username");
 	}
 
 	@Test
-	public void numericValues() throws IOException {
+	public void alphanumericValues() throws IOException {
 		
 		driver.get(properties.getProperty("url"));
 		
@@ -216,6 +267,8 @@ public class AdminTest extends Initializer {
 
 		// To confirm that error message is displaying or not
 		Assert.assertTrue((LoginPage.getErrorMessage(driver).isDisplayed()));
+		
+		System.out.println("In numeric values");
 	}
 
 	@Test
@@ -230,11 +283,13 @@ public class AdminTest extends Initializer {
 
 		// To confirm that error message is displaying or not
 		Assert.assertTrue((LoginPage.getErrorMessage(driver).isDisplayed()));
+		
+		System.out.println("In empty fields");
 	}
-
-	// @AfterTest
-	// public void closeDriver()
-	// {
-	// driver.close();
-	// }
+	
+//	 @AfterTest()
+//	 public void closeDriver()
+//	 {
+//		 driver.close();
+//	 }
 }

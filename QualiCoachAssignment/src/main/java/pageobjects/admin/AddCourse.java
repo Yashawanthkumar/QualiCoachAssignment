@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AddCourse {
-	
+
 	//to click on course tab to create new course
 	static	By courseTab=By.xpath("/html/body/section/div[2]/div/ul/li[3]");
 	

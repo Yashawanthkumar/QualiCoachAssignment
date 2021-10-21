@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test name="Test">
+<suite name="QualiCoach">
+  <test name="AdminTest">
     <classes>
-      <class name="Qualitest.QualiCoachAssignment.AppTest"/>
-      <class name="Qualitest.QualiCoachAssignment.AdminTest"/>
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+     	<class name="Qualitest.QualiCoachAssignment.AdminTest"/>
+      </classes>
+  </test>
+ <test name="StudentTest">
+    <classes>
+     	<class name="Qualitest.QualiCoachAssignment.StudentTest"/>
+      </classes>
+  	</test>
+</suite>
