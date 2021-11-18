@@ -31,7 +31,15 @@ public class SameOperations {
 		
 	//to click on Add filter to search user name in list of users
 	static By addFilterButton=By.xpath("//input[@id='id_addfilter']");
-		
+	
+	// to get back to home after creating new user
+	static By backHome=By.xpath("//a[@itemprop='url']/span[text()='Home']");
+	
+	public static WebElement getBackHome(WebDriver driver)
+	{
+		return driver.findElement(backHome);
+	}
+	
 	public static WebElement getProfile(WebDriver driver)
 	{
 		return driver.findElement(profile);

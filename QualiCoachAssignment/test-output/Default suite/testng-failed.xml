@@ -3,21 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Qualitest.QualiCoachAssignment.AdminTest">
+      <class name="Qualitest.QualiCoachAssignment.StudentTest">
         <methods>
-          <include name="deleteUser"/>
-          <include name="alphanumericValues"/>
-          <include name="createNewUser"/>
-          <include name="viewDownloadReports"/>
-          <include name="init"/>
-          <include name="validAdminPageAutomation"/>
-          <include name="inValidUsername"/>
-          <include name="addCourse"/>
-          <include name="editUsersInformation"/>
-          <include name="emptyFields"/>
+          <include name="enroleToCourse"/>
           <include name="inValidPassword"/>
+          <include name="validstudentPageAutomation"/>
+          <include name="getFeedbackBadge"/>
+          <include name="getFeedbackCertificate"/>
+          <include name="editProfile"/>
         </methods>
-      </class> <!-- Qualitest.QualiCoachAssignment.AdminTest -->
+      </class> <!-- Qualitest.QualiCoachAssignment.StudentTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

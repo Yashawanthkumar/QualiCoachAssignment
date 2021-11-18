@@ -3,9 +3,9 @@ package Qualitest.QualiCoachAssignment;
 //importing necessary packages
 
 import java.io.IOException;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageobjects.admin.AddCourse;
@@ -18,11 +18,12 @@ import pageobjects.sameoperations.SameOperations;
 import resources.Initializer;
 
 /*
- * AdminTest is Test class.It has all the performance/actions that a admin can perform
- * as per the requirements given.
- * Author : Yashawantkumar Hodlur
- * Date : 17/Oct/2021
- */
+* AdminTest is Test class.It has all the performance/actions that a admin can perform
+* as per the requirements given.
+* Author : Yashawantkumar Hodlur
+* Date : 17/Oct/2021
+*/
+
 public class AdminTest extends Initializer {
 	
 	/*

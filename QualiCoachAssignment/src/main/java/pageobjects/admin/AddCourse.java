@@ -39,7 +39,13 @@ public class AddCourse {
 	//to click on save and display button
 	static By saveAndDisplay=By.name("saveanddisplay");
 	
+	// to check error in short name of course
+	static By errorInCourse=By.xpath("//span[@class='error']");
 	
+	public static WebElement errorInShortName(WebDriver driver)
+	{
+		return driver.findElement(errorInCourse);
+	}
 	
 	public static WebElement getSaveAndDisplay(WebDriver driver)
 	{

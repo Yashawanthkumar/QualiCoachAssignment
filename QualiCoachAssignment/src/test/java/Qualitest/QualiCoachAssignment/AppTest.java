@@ -7,13 +7,13 @@ import org.testng.annotations.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
 {
     private static final  Logger logger=LogManager.getLogger(AppTest.class);
     
     @Test
     public void demo()
     {
-    	System.out.println("Inherited");
+    	logger.info("In the demo");
     }
 }

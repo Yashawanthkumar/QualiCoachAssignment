@@ -1,16 +1,15 @@
 package Qualitest.QualiCoachAssignment;
 
-//Importing necessary packages
-
 import java.io.IOException;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import pageobjects.sameoperations.LoginPage;
 import pageobjects.sameoperations.SameOperations;
 import pageobjects.student.CertificateBadgeFeedbackPage;

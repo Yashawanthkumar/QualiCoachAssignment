@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="Qualitest.QualiCoachAssignment.AddCourseTest">
+        <methods>
+          <include name="addCourse"/>
+        </methods>
+      </class> <!-- Qualitest.QualiCoachAssignment.AddCourseTest -->
+      <class name="Qualitest.QualiCoachAssignment.StudentTest">
+        <methods>
+          <include name="validstudentPageAutomation"/>
+        </methods>
+      </class> <!-- Qualitest.QualiCoachAssignment.StudentTest -->
+      <class name="Qualitest.QualiCoachAssignment.ViewAndDownloadReport">
+        <methods>
+          <include name="viewDownloadReports"/>
+        </methods>
+      </class> <!-- Qualitest.QualiCoachAssignment.ViewAndDownloadReport -->
+      <class name="Qualitest.QualiCoachAssignment.EditUserInformationTest">
+        <methods>
+          <include name="editUsersInformation"/>
+        </methods>
+      </class> <!-- Qualitest.QualiCoachAssignment.EditUserInformationTest -->
+      <class name="Qualitest.QualiCoachAssignment.DeleteUserTest">
+        <methods>
+          <include name="deleteUser"/>
+        </methods>
+      </class> <!-- Qualitest.QualiCoachAssignment.DeleteUserTest -->
+      <class name="Qualitest.QualiCoachAssignment.CreateNewUserTest">
+        <methods>
+          <include name="createNewUser"/>
+        </methods>
+      </class> <!-- Qualitest.QualiCoachAssignment.CreateNewUserTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
